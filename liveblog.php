@@ -1053,6 +1053,7 @@ if ( ! class_exists( 'WPCOM_Liveblog' ) ) :
 						'command_class'                => apply_filters( 'liveblog_command_class', WPCOM_Liveblog_Entry_Extend_Feature_Commands::$class_prefix ),
 
 						// i18n
+						'empty_entry_confirmation'     => __( 'Do you really want to publish an empty entry?', 'liveblog' ),
 						'delete_confirmation'          => __( 'Do you really want to delete this entry? There is no way back.', 'liveblog' ),
 						'delete_key_confirm'           => __( 'Do you want to delete this key entry?', 'liveblog' ),
 						'error_message_template'       => __( 'Error {error-code}: {error-message}', 'liveblog' ),
