@@ -160,3 +160,21 @@ export const namedNodeMapToObject = namedNodeMap =>
     ...object,
     [item.name === 'class' ? 'className' : item.name]: item.value,
   }), {});
+
+/**
+ * Determine whether provided editor content is empty
+ * @param {string} content
+ *
+ * @return {boolean} isEmpty
+ */
+export const isContentEmpty = content => {
+  let doc = document.implementation.createHTMLDocument('');
+  doc.body.innerHTML = content;
+
+  const text = doc.body.textContent.trim();
+  const images = doc.images;
+
+  const isEmpty = Boolean(text === '' && images.length < 1);
+
+  return isEmpty;
+}
