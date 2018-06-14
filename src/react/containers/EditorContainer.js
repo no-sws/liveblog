@@ -22,7 +22,7 @@ import HTMLInput from '../components/HTMLInput';
 
 import Editor, { decorators, convertFromHTML, convertToHTML } from '../Editor/index';
 
-import { getImageSize } from '../Editor/utils';
+import { getImageSize, isContentEmpty } from '../Editor/utils';
 
 class EditorContainer extends Component {
   constructor(props) {
@@ -87,12 +87,16 @@ class EditorContainer extends Component {
   }
 
   publish() {
-    const { updateEntry, entry, entryEditClose, createEntry, isEditing } = this.props;
+    const { updateEntry, entry, entryEditClose, createEntry, isEditing, config } = this.props;
     const { editorState, authors } = this.state;
     const content = this.getContent();
     const authorIds = authors.map(author => author.id);
     const author = authorIds.length > 0 ? authorIds[0] : false;
     const contributors = authorIds.length > 1 ? authorIds.slice(1, authorIds.length) : false;
+
+    if (isContentEmpty(content) && !window.confirm(config.empty_entry_confirmation)) {
+      return;
+    }
 
     if (isEditing) {
       updateEntry({
