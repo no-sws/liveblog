@@ -17,3 +17,9 @@ test('Content containing image should not be empty', () => {
   const isEmpty = isContentEmpty(content);
   expect(isEmpty).toBe(false);
 });
+
+test('Content containing iframe should not be empty', () => {
+  const content = '<p><iframe src="//eg.com/abc.html"></iframe></p>';
+  const isEmpty = isContentEmpty(content);
+  expect(isEmpty).toBe(false);
+});
