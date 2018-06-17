@@ -35,3 +35,18 @@ test('Content containing audio should not be empty', () => {
   const isEmpty = isContentEmpty(content);
   expect(isEmpty).toBe(false);
 });
+
+test('Content containing video should not be empty', () => {
+  const content = `
+    <p>
+      <video
+        controls
+        src="abc.mp4"
+        poster="abc.jpg"
+        width="100">
+      </video>
+    </p>
+  `;
+  const isEmpty = isContentEmpty(content);
+  expect(isEmpty).toBe(false);
+});
