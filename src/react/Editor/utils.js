@@ -181,7 +181,8 @@ export const isContentEmpty = content => {
 
   const nonEmptyTags = [
     'audio',
-    'iframe'
+    'iframe',
+    'video'
   ];
 
   if (doc.querySelectorAll(nonEmptyTags.join(',')).length > 0) {
