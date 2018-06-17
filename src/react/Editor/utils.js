@@ -171,11 +171,21 @@ export const isContentEmpty = content => {
   let doc = document.implementation.createHTMLDocument('');
   doc.body.innerHTML = content;
 
-  const isEmpty = Boolean(
-    doc.body.textContent.trim() === '' &&
-    doc.images.length < 1 &&
-    doc.querySelectorAll('iframe').length < 1
-  );
+  if (doc.body.textContent.trim() !== '') {
+    return false;
+  }
 
-  return isEmpty;
+  if (doc.images.length > 0) {
+    return false;
+  }
+
+  const nonEmptyTags = [
+    'iframe'
+  ];
+
+  if (doc.querySelectorAll(nonEmptyTags.join(',')).length > 0) {
+    return false;
+  }
+
+  return true;
 }
