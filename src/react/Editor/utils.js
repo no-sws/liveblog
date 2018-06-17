@@ -171,10 +171,10 @@ export const isContentEmpty = content => {
   let doc = document.implementation.createHTMLDocument('');
   doc.body.innerHTML = content;
 
-  const text = doc.body.textContent.trim();
-  const images = doc.images;
-
-  const isEmpty = Boolean(text === '' && images.length < 1);
+  const isEmpty = Boolean(
+    doc.body.textContent.trim() === '' &&
+    doc.images.length < 1
+  );
 
   return isEmpty;
 }
