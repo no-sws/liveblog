@@ -174,7 +174,7 @@ export const isContentEmpty = content => {
   const isEmpty = Boolean(
     doc.body.textContent.trim() === '' &&
     doc.images.length < 1 &&
-    doc.getElementsByTagName('iframe').length < 1
+    doc.querySelectorAll('iframe').length < 1
   );
 
   return isEmpty;
