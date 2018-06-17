@@ -180,6 +180,7 @@ export const isContentEmpty = content => {
   }
 
   const nonEmptyTags = [
+    'audio',
     'iframe'
   ];
 
