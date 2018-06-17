@@ -23,3 +23,15 @@ test('Content containing iframe should not be empty', () => {
   const isEmpty = isContentEmpty(content);
   expect(isEmpty).toBe(false);
 });
+
+test('Content containing audio should not be empty', () => {
+  const content = `
+    <p>
+      <audio controls loop>
+        <source type="audio/mpeg" src="abc.mp3">
+      </audio>
+    </p>
+  `;
+  const isEmpty = isContentEmpty(content);
+  expect(isEmpty).toBe(false);
+});
